@@ -1,6 +1,9 @@
 package programowaniezaaw;
 
 import java.io.*;
+import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 public class BooksReader {
 
@@ -14,6 +17,8 @@ public class BooksReader {
     }
 
     static void mainStringBuilder(BufferedReader br) {
+        ArrayList<Book> books = new ArrayList<>();
+
         try {
             StringBuilder sb = new StringBuilder();
             assert br != null;
@@ -22,10 +27,12 @@ public class BooksReader {
             while (line != null) {
                 sb.append(line);
                 sb.append(System.lineSeparator());
+                String[] attributes = line.split(";");
+                Book book = createBook(attributes);
+                books.add(book);
                 line = br.readLine();
             }
-            String everything = sb.toString();
-            System.out.println(everything);
+            System.out.print(books);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -35,6 +42,10 @@ public class BooksReader {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static Book createBook(String[] attributes) {
+        return new Book(attributes[0], parseInt(attributes[1]), parseInt(attributes[2]));
     }
 }
 

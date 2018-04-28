@@ -12,7 +12,7 @@ public class MyApp {
         CategoriesReader categoriesReader = new CategoriesReader();
 
         List<String> menuList = new ArrayList<>();
-        menuList.add("Kontakt");
+        menuList.add("Contact");
         menuList.add("Books");
         menuList.add("Authors");
         menuList.add("Categories");
