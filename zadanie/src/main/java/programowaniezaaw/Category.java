@@ -2,22 +2,22 @@ package programowaniezaaw;
 
 public class Category {
 
-    private int numberC;
+    private int idC;
 
     private String nameC;
 
-    private int number2C;
+    private int priorityC;
 
-    public Category(int numberC, String nameC,  int number2C) {
-        this.numberC = numberC;
+    public Category(int idC, String nameC,  int priorityC) {
+        this.idC = idC;
         this.nameC = nameC;
-        this.number2C = number2C;
+        this.priorityC = priorityC;
     }
 
     @Override
     public String toString() {
-        return "General number: " + numberC +
+        return "Id: " + idC +
                 ", name is: " + nameC +
-                ", category number is: " + number2C + ";\n";
+                ", priority number is: " + priorityC + ";\n";
     }
 }

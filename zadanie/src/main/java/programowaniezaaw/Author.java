@@ -1,22 +1,22 @@
 package programowaniezaaw;
 
 public class Author {
-    private int numberA;
+    private int idA;
 
     private String nameA;
 
-    private int number2A;
+    private int age;
 
-    public Author( int numberA, String nameA, int number2A) {
-        this.numberA = numberA;
+    public Author( int idA, String nameA, int age) {
+        this.idA = idA;
         this.nameA = nameA;
-        this.number2A = number2A;
+        this.age = age;
     }
 
     @Override
     public String toString() {
-        return "General number: " + numberA +
+        return "Id: " + idA +
                 ", author name is: " + nameA +
-                ", author number is: " + number2A + ";\n";
+                ", author age is: " + age + ";\n";
     }
 }
