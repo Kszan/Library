@@ -20,4 +20,16 @@ class Book {
                 ", isbn is: " + isbn +
                 ", year is: " + year + ";\n";
     }
+
+    public String getNameB() {
+        return nameB;
+    }
+
+    public int getIsbn() {
+        return isbn;
+    }
+
+    public int getYear() {
+        return year;
+    }
 }

@@ -14,6 +14,7 @@ public class BooksReader {
         BufferedReader br;
         br = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(source)));
         mainStringBuilder(br);
+
     }
 
     static void mainStringBuilder(BufferedReader br) {
@@ -32,7 +33,6 @@ public class BooksReader {
                 books.add(book);
                 line = br.readLine();
             }
-            System.out.print(books);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -42,6 +42,7 @@ public class BooksReader {
                 e.printStackTrace();
             }
         }
+        BookData.getInstance().setBooks(books);
     }
 
     private static Book createBook(String[] attributes) {
