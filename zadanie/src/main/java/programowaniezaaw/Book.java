@@ -4,11 +4,11 @@ class Book {
 
     private String nameB;
 
-    private int isbn;
+    private String isbn;
 
     private int year;
 
-    public Book(String nameB, int isbn, int year) {
+    public Book(String nameB, String isbn, int year) {
         this.nameB = nameB;
         this.isbn = isbn;
         this.year = year;
@@ -25,11 +25,13 @@ class Book {
         return nameB;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
     public int getYear() {
         return year;
     }
+
+
 }

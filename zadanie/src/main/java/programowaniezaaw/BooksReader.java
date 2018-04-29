@@ -46,7 +46,7 @@ public class BooksReader {
     }
 
     private static Book createBook(String[] attributes) {
-        return new Book(attributes[0], parseInt(attributes[1]), parseInt(attributes[2]));
+        return new Book(attributes[0], attributes[1], parseInt(attributes[2]));
     }
 }
 

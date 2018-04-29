@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class MyApp {
     public static void main(String[] args) {
@@ -24,7 +25,7 @@ public class MyApp {
         myMenuList(menuList);
         int menuNumber = scnm.nextInt();
         int loopNumber = 1;
-        while (loopNumber != 5) {
+        while (loopNumber != 6) {
             switch(menuNumber) {
                 case 1:
                     System.out.println("Contact us via email: jakisemail@gmail.com\n");
@@ -40,6 +41,7 @@ public class MyApp {
 //                        }
 //                    }
                     books.stream().filter(p -> p.getYear() < 2005).forEach(System.out::println);
+//                    List<Book> collect = books.stream().filter(book -> book.getYear() < 2007).collect(Collectors.toList());
                     break;
                 case 4:
                     authorsReader.authorsReader();
@@ -66,6 +68,6 @@ public class MyApp {
         System.out.println("\t\t3. " + menuList.get(2));
         System.out.println("\t\t\t4. " + menuList.get(3));
         System.out.println("\t\t\t\t5. " + menuList.get(4));
-        System.out.println("\t\t\t\t\t5. " + menuList.get(5));
+        System.out.println("\t\t\t\t\t6. " + menuList.get(5));
     }
 }
