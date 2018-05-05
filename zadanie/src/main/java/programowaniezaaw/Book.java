@@ -1,5 +1,7 @@
 package programowaniezaaw;
 
+import java.util.List;
+
 class Book {
 
     private String nameB;
@@ -10,11 +12,17 @@ class Book {
 
     private BindingType binding;
 
-    public Book(String nameB, String isbn, int year, BindingType binding) {
+    String authors;
+
+    private int bookCategory;
+
+    public Book(String nameB, String isbn, int year, BindingType binding, String authors, int bookCategory) {
         this.nameB = nameB;
         this.isbn = isbn;
         this.year = year;
         this.binding = binding;
+        this.authors = authors;
+        this.bookCategory = bookCategory;
     }
 
     @Override
@@ -22,11 +30,17 @@ class Book {
         return "Book name is: " + nameB +
                 ", isbn is: " + isbn +
                 ", year is: " + year +
-                ", binding type: " + binding + "\n";
+                ", binding type: " + binding +
+                ", authors id: " + authors +
+                ", book category: " + bookCategory + "\n";
     }
 
     public BindingType getBinding() {
         return binding;
+    }
+
+    public int getBookCategory() {
+        return bookCategory;
     }
 
     public String getNameB() {
@@ -39,6 +53,10 @@ class Book {
 
     public int getYear() {
         return year;
+    }
+
+    public String getAuthors() {
+        return authors;
     }
 
     public void setYear(int year) {

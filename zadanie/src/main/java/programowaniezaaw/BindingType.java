@@ -19,5 +19,4 @@ public enum BindingType {
         }
         return null;
     }
-
 }

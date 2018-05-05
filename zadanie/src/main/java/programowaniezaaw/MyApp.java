@@ -20,7 +20,7 @@ public class MyApp {
         menuList.add("Contact");
         menuList.add("Books");
         menuList.add("Books year first");
-        menuList.add("Books tile first");
+        menuList.add("Books title first");
         menuList.add("Books isbn first");
         menuList.add("Books before 2005");
         menuList.add("Authors");
@@ -56,13 +56,7 @@ public class MyApp {
                     break;
                 case 6:
                     ArrayList<Book> books = bookData.getBooks();
-//                    for (Book book : books) {
-//                        if(book.getYear() < 2005) {
-//                            System.out.println(book);
-//                        }
-//                    }
                     books.stream().filter(p -> p.getYear() < 2005).forEach(System.out::println);
-//                    List<Book> collect = books.stream().filter(book -> book.getYear() < 2007).collect(Collectors.toList());
                     break;
                 case 7:
                     authorsReader.authorsReader();
