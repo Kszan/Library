@@ -14,11 +14,15 @@ public class MyApp {
         AuthorsReader authorsReader = new AuthorsReader();
         CategoriesReader categoriesReader = new CategoriesReader();
         BooksFunctions booksFunctions = new BooksFunctions();
+        BookPrinter bookPrinter;
 
         List<String> menuList = new ArrayList<>();
         menuList.add("Contact");
         menuList.add("Books");
-        menuList.add("SelectBook");
+        menuList.add("Books year first");
+        menuList.add("Books tile first");
+        menuList.add("Books isbn first");
+        menuList.add("Books before 2005");
         menuList.add("Authors");
         menuList.add("Categories");
         menuList.add("Sort after year");
@@ -30,7 +34,7 @@ public class MyApp {
         int menuNumber = scnm.nextInt();
         int loopNumber = 1;
         BookData bookData = BookData.getInstance();
-        while (loopNumber != 9) {
+        while (loopNumber != 12) {
             switch(menuNumber) {
                 case 1:
                     System.out.println("Contact us via email: jakisemail@gmail.com\n");
@@ -39,6 +43,18 @@ public class MyApp {
                     System.out.println(BookData.getInstance().getBooks());
                     break;
                 case 3:
+                    bookPrinter = new BookPrinter(new YearFirstStrategy());
+                    bookPrinter.showBooks(bookData.getBooks());
+                    break;
+                case 4:
+                    bookPrinter = new BookPrinter(new TitleFirstStrategy());
+                    bookPrinter.showBooks(bookData.getBooks());
+                    break;
+                case 5:
+                    bookPrinter = new BookPrinter(new IsbnFirstStrategy());
+                    bookPrinter.showBooks(bookData.getBooks());
+                    break;
+                case 6:
                     ArrayList<Book> books = bookData.getBooks();
 //                    for (Book book : books) {
 //                        if(book.getYear() < 2005) {
@@ -48,22 +64,22 @@ public class MyApp {
                     books.stream().filter(p -> p.getYear() < 2005).forEach(System.out::println);
 //                    List<Book> collect = books.stream().filter(book -> book.getYear() < 2007).collect(Collectors.toList());
                     break;
-                case 4:
+                case 7:
                     authorsReader.authorsReader();
                     break;
-                case 5:
+                case 8:
                     categoriesReader.categoriesReader();
                     break;
-                case 6:
+                case 9:
                     System.out.println(booksFunctions.sortByYear(bookData.getBooks()));
                     break;
-                case 7:
+                case 10:
                     System.out.println(booksFunctions.sortByYearAtLast(bookData.getBooks()));
                     break;
-                case 8:
+                case 11:
                     System.out.println(booksFunctions.booksAfter2003(bookData.getBooks()));
                     break;
-                case 9:
+                case 12:
                     System.out.println("Close");
                     break;
                     default:
@@ -86,6 +102,9 @@ public class MyApp {
         System.out.println("\t\t\t\t\t\t7. " + menuList.get(6));
         System.out.println("\t\t\t\t\t\t\t8. " + menuList.get(7));
         System.out.println("\t\t\t\t\t\t\t\t9. " + menuList.get(8));
+        System.out.println("\t\t\t\t\t\t\t\t\t10. " + menuList.get(9));
+        System.out.println("\t\t\t\t\t\t\t\t\t\t11. " + menuList.get(10));
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t12. " + menuList.get(11));
 
     }
 }
