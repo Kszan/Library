@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BooksFunctions {
+
     //1
     public Book findBookByISBN(List<Book> books) {
         Book collect = books.stream().filter(book -> book.getIsbn().equals("0321146530")).findFirst().get();
@@ -50,8 +51,8 @@ public class BooksFunctions {
     }
 
     //9
-    public long booksAfter2000(List<Book> books) {
-        return books.stream().filter(book -> book.getYear() > 2000).count();
+    public List<Book> booksAfter2003(List<Book> books) {
+        return books.stream().filter(book -> book.getYear() > 2003).collect(Collectors.toList());
     }
 
     //10

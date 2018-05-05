@@ -13,6 +13,7 @@ public class MyApp {
         booksReader.booksReader();
         AuthorsReader authorsReader = new AuthorsReader();
         CategoriesReader categoriesReader = new CategoriesReader();
+        BooksFunctions booksFunctions = new BooksFunctions();
 
         List<String> menuList = new ArrayList<>();
         menuList.add("Contact");
@@ -20,12 +21,16 @@ public class MyApp {
         menuList.add("SelectBook");
         menuList.add("Authors");
         menuList.add("Categories");
+        menuList.add("Sort after year");
+        menuList.add("Reverse after year");
+        menuList.add("Books after 2003");
         menuList.add("Close");
         Scanner scnm = new Scanner(System.in);
         myMenuList(menuList);
         int menuNumber = scnm.nextInt();
         int loopNumber = 1;
-        while (loopNumber != 6) {
+        BookData bookData = BookData.getInstance();
+        while (loopNumber != 9) {
             switch(menuNumber) {
                 case 1:
                     System.out.println("Contact us via email: jakisemail@gmail.com\n");
@@ -34,7 +39,7 @@ public class MyApp {
                     System.out.println(BookData.getInstance().getBooks());
                     break;
                 case 3:
-                    ArrayList<Book> books = BookData.getInstance().getBooks();
+                    ArrayList<Book> books = bookData.getBooks();
 //                    for (Book book : books) {
 //                        if(book.getYear() < 2005) {
 //                            System.out.println(book);
@@ -50,6 +55,15 @@ public class MyApp {
                     categoriesReader.categoriesReader();
                     break;
                 case 6:
+                    System.out.println(booksFunctions.sortByYear(bookData.getBooks()));
+                    break;
+                case 7:
+                    System.out.println(booksFunctions.sortByYearAtLast(bookData.getBooks()));
+                    break;
+                case 8:
+                    System.out.println(booksFunctions.booksAfter2003(bookData.getBooks()));
+                    break;
+                case 9:
                     System.out.println("Close");
                     break;
                     default:
@@ -69,5 +83,9 @@ public class MyApp {
         System.out.println("\t\t\t4. " + menuList.get(3));
         System.out.println("\t\t\t\t5. " + menuList.get(4));
         System.out.println("\t\t\t\t\t6. " + menuList.get(5));
+        System.out.println("\t\t\t\t\t\t7. " + menuList.get(6));
+        System.out.println("\t\t\t\t\t\t\t8. " + menuList.get(7));
+        System.out.println("\t\t\t\t\t\t\t\t9. " + menuList.get(8));
+
     }
 }
