@@ -1,8 +1,11 @@
 package programowaniezaaw;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Book {
+
+    private static List<Book> books;
 
     private String nameB;
 
@@ -12,17 +15,26 @@ class Book {
 
     private BindingType binding;
 
-    String authors;
+    List<Author> authors;
 
     private int bookCategory;
 
-    public Book(String nameB, String isbn, int year, BindingType binding, String authors, int bookCategory) {
+
+    public Book(String nameB, String isbn, int year, BindingType binding, List<Author> authors, int bookCategory) {
         this.nameB = nameB;
         this.isbn = isbn;
         this.year = year;
         this.binding = binding;
         this.authors = authors;
         this.bookCategory = bookCategory;
+    }
+
+    public static void setBooks(List<Book> books) {
+        Book.books = books;
+    }
+
+    public static List<Book> getBooks() {
+        return books;
     }
 
     @Override
@@ -32,7 +44,7 @@ class Book {
                 ", year is: " + year +
                 ", binding type: " + binding +
                 ", authors id: " + authors +
-                ", book category: " + bookCategory + "\n";
+                ", book category: " + bookCategory;
     }
 
     public BindingType getBinding() {
@@ -55,9 +67,11 @@ class Book {
         return year;
     }
 
-    public String getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
+
+
 
     public void setYear(int year) {
         this.year = year;

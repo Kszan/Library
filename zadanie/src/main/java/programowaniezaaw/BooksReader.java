@@ -2,22 +2,19 @@ package programowaniezaaw;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
 public class BooksReader {
 
-    public void booksReader() {
-
-        String source = "books.csv";
-
+    public void readBooks() {
+        String uri = "books.csv";
         BufferedReader br;
-        br = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(source)));
-        mainStringBuilder(br);
-
+        br = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream(uri)));
+        BooksReader.createBooksFromCSV(br);
     }
-
-    static void mainStringBuilder(BufferedReader br) {
+    static void createBooksFromCSV(BufferedReader br) {
         ArrayList<Book> books = new ArrayList<>();
 
         try {
@@ -46,8 +43,10 @@ public class BooksReader {
     }
 
     private static Book createBook(String[] attributes) {
+        List<Author> authorById = AuthorData.getInstance().getAuthorById(attributes[4].split(","));
+
         return new Book(attributes[0], attributes[1], parseInt(attributes[2]),
-                BindingType.findByType(attributes[3]), attributes[4],parseInt(attributes[5]));
+                BindingType.findByType(attributes[3]), authorById, parseInt(attributes[5]));
     }
 }
 

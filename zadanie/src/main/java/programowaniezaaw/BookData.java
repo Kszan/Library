@@ -20,6 +20,4 @@ public class BookData {
     public static BookData getInstance() {
         return instance;
     }
-
-
 }

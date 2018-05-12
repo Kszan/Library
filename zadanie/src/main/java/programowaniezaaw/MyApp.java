@@ -2,19 +2,21 @@ package programowaniezaaw;
 
 import java.util.ArrayList;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class MyApp {
     public static void main(String[] args) {
-        BooksReader booksReader = new BooksReader();
-        booksReader.booksReader();
+
         AuthorsReader authorsReader = new AuthorsReader();
+        authorsReader.authorsReader();
+        BooksReader booksReader = new BooksReader();
+        booksReader.readBooks();
         CategoriesReader categoriesReader = new CategoriesReader();
         BooksFunctions booksFunctions = new BooksFunctions();
         BookPrinter bookPrinter;
+        NewAuthor newAuthor = new NewAuthor();
+        SaveAuthorsToFile saveAuthorsToFile = new SaveAuthorsToFile();
 
         List<String> menuList = new ArrayList<>();
         menuList.add("Contact");
@@ -28,13 +30,15 @@ public class MyApp {
         menuList.add("Sort after year");
         menuList.add("Reverse after year");
         menuList.add("Books after 2003");
+        menuList.add("Add new Author");
+        menuList.add("Save changes into books.csv");
         menuList.add("Close");
         Scanner scnm = new Scanner(System.in);
         myMenuList(menuList);
         int menuNumber = scnm.nextInt();
         int loopNumber = 1;
         BookData bookData = BookData.getInstance();
-        while (loopNumber != 12) {
+        while (loopNumber != 14) {
             switch(menuNumber) {
                 case 1:
                     System.out.println("Contact us via email: jakisemail@gmail.com\n");
@@ -59,7 +63,7 @@ public class MyApp {
                     books.stream().filter(p -> p.getYear() < 2005).forEach(System.out::println);
                     break;
                 case 7:
-                    authorsReader.authorsReader();
+                    System.out.println(AuthorData.getInstance().getAuthors());
                     break;
                 case 8:
                     categoriesReader.categoriesReader();
@@ -74,6 +78,13 @@ public class MyApp {
                     System.out.println(booksFunctions.booksAfter2003(bookData.getBooks()));
                     break;
                 case 12:
+                    newAuthor.getNewAuthorData();
+                    break;
+                case 13:
+                    List<Book> booksNewFile = new ArrayList<>();
+                    saveAuthorsToFile.saveBooksIntoTheFile(booksNewFile);
+                    break;
+                case 14:
                     System.out.println("Close");
                     break;
                     default:
@@ -99,6 +110,7 @@ public class MyApp {
         System.out.println("\t\t\t\t\t\t\t\t\t10. " + menuList.get(9));
         System.out.println("\t\t\t\t\t\t\t\t\t\t11. " + menuList.get(10));
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t12. " + menuList.get(11));
-
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t13. " + menuList.get(12));
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t14. " + menuList.get(13));
     }
 }

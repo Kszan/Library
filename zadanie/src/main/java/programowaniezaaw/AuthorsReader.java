@@ -17,7 +17,6 @@ public class AuthorsReader {
         AuthorsReader.mainStringBuilderA(br);
     }
 
-
     static void mainStringBuilderA(BufferedReader br) {
         ArrayList<Author> authors = new ArrayList<>();
 
@@ -44,10 +43,11 @@ public class AuthorsReader {
                 e.printStackTrace();
             }
         }
+        AuthorData.getInstance().setAuthors(authors);
     }
 
     private static Author createAuthor(String[] attributes) {
-        return new Author(parseInt(attributes[0]), (attributes[1]), parseInt(attributes[2]));
+        return new Author(attributes[0], (attributes[1]), parseInt(attributes[2]));
     }
 }
 
